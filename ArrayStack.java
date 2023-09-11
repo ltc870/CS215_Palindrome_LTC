@@ -91,7 +91,7 @@ public class ArrayStack<T> implements StackInterface<T> {
 
 	private void checkIntegrity() {
 		if (!integrityOK)
-			throw new EmptyStackException("ArrayBag object is corrupt.");
+			throw new EmptyStackException("ArrayStack object is corrupt.");
 	} // end checkIntegrity
 
 	private void checkCapacity(int capacity) {
