@@ -27,6 +27,8 @@ public class ArrayStack<T> implements StackInterface<T> {
 		integrityOK = true;
 	} // end constructor
 
+	/** Adds a new entry to the top of this stack.
+    @param newEntry  An object to be added to the stack. */
 	public void push(T newEntry) {
 		checkIntegrity();
 		ensureCapacity();
@@ -34,6 +36,7 @@ public class ArrayStack<T> implements StackInterface<T> {
 		topIndex++;
 	} // end push
 
+	/** Ensures that the stack has enough space, if not then it doubles the stack's size */
 	private void ensureCapacity() {
 		if (topIndex >= stack.length - 1) { // If array is full, double its size
 			int newLength = 2 * stack.length;
@@ -42,6 +45,10 @@ public class ArrayStack<T> implements StackInterface<T> {
 		} // end if
 	} // end ensureCapacity
 
+	
+	/** Retrieves this stack's top entry.
+    @return  The object at the top of the stack.
+    @throws  EmptyStackException if the stack is empty. */
 	public T peek() {
 		checkIntegrity();
 		if (isEmpty())
@@ -50,6 +57,10 @@ public class ArrayStack<T> implements StackInterface<T> {
 			return stack[topIndex];
 	} // end peek
 
+	
+	/** Removes and returns this stack's top entry.
+    @return  The object at the top of the stack. 
+    @throws  EmptyStackException if the stack is empty before the operation. */
 	public T pop() {
 		checkIntegrity();
 		if (isEmpty())
@@ -62,10 +73,15 @@ public class ArrayStack<T> implements StackInterface<T> {
 		} // end if
 	} // end pop
 
+	
+	/** Detects whether this stack is empty.
+    @return  True if the stack is empty. */
 	public boolean isEmpty() {
 		return topIndex < 0;
 	} // end isEmpty
 
+	
+	/** Removes all entries from this stack. */
 	public void clear() {
 		while (topIndex > -1) {
 			stack[topIndex] = null;
